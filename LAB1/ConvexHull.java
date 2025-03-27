@@ -1,3 +1,4 @@
+package LAB1;
 import java.util.*;
 
 class Point {
@@ -10,18 +11,22 @@ class Point {
 }
 
 public class ConvexHull {
+    // A -> B -> C đi theo thứ tự ngược chiều kim đồng hồ
     static boolean ccw(Point A, Point B, Point C) {
         return 1L * (B.x - A.x) * (C.y - A.y) - 1L * (C.x - A.x) * (B.y - A.y) > 0;
     }
 
+    // Trả về bao lồi với thứ tự các điểm được liệt kê theo chiều kim đồng hồ
     static List<Point> convexHull(List<Point> p) {
         int n = p.size();
         if (n < 2) return p;
         
+        // Sắp xếp các điểm theo tọa độ x, nếu bằng nhau sắp xếp theo y
         p.sort((A, B) -> A.x != B.x ? Integer.compare(A.x, B.x) : Integer.compare(A.y, B.y));
         
         List<Point> hull = new ArrayList<>();
         
+        // Dựng bao trên
         for (Point point : p) {
             while (hull.size() >= 2 && ccw(hull.get(hull.size() - 2), hull.get(hull.size() - 1), point)) {
                 hull.remove(hull.size() - 1);
