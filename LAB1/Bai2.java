@@ -12,7 +12,7 @@ public class Bai2 {
             double x = 2 * random.nextDouble() - 1; 
             double y = 2 * random.nextDouble() - 1; 
 
-            if (x * x + y * y <= 1) { /
+            if (x * x + y * y <= 1) { 
                 pointsInsideCircle++;
             }
         }
