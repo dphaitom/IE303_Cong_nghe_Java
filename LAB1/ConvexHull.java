@@ -29,6 +29,7 @@ public class ConvexHull {
             hull.add(point);
         }
         
+        // Dựng bao dưới
         int t = hull.size() + 1;
         for (int i = n - 2; i >= 0; i--) {
             while (hull.size() >= t && ccw(hull.get(hull.size() - 2), hull.get(hull.size() - 1), p.get(i))) {
@@ -37,6 +38,7 @@ public class ConvexHull {
             hull.add(p.get(i));
         }
         
+        // Xoá điểm đầu bị lặp lại ở cuối
         if (hull.size() > 1) hull.remove(hull.size() - 1);
         
         return hull;
